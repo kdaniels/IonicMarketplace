@@ -1,0 +1,7 @@
+{
+  "name": "IonicMarketplace",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
