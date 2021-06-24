@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="translucent">
+    <ion-buttons slot="start">
+      <ion-button (click)="signOut()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+      <ion-button (click)="userAccount()">
+        <ion-icon slot="icon-only" name="person-circle-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-title>Pop! Vinyl Store</ion-title> -->
+    <ion-buttons slot="end">
+      <p>{{ this.cartItemCount | async }}</p>
+      <ion-button (click)="openCart()">
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/buyer/orders">
+        <ion-icon slot="icon-only" name="documents"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart()" color="secondary">
+      <div class="cart-length">{{ this.cartItemCount | async }}</div>
+      <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+
+<!--   <div class="altnerate_header">
+    <div class="userInformation" *ngIf="user">
+      <p><ion-icon name="alert-outline"></ion-icon> {{ user.name }}</p>
+      <p>{{ user.email }}</p>
+      <p>{{ user?.customerId }}<ion-icon name="checkmark-done-outline"></ion-icon></p>
+    </div>
+  </div> -->
+
+  <ion-card class="card-header">
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <img class="img-small" height="50%" width="50%" src="https://mickeyblog.com/wp-content/uploads/2019/02/pop-vinyl-logo-vector.png">
+    </div>
+    <ion-card-content class="header">
+      <p>The Pop! Vinyl Store was established in 2001 and has since become the world's leading plastic waste manufacturer! Get your tat in any shape, size and colour</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-header">
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <img class="img-small" height="50%" width="50%" src="https://via.placeholder.com/600x200">
+    </div>
+    <ion-card-content class="header">
+      <p>Example of Custom Content</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-card class="card-header">
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <img class="img-small" height="50%" width="50%" src="https://i.ibb.co/HqBv50b/ezgif-com-gif-maker-1.gif">
+    </div>
+  </ion-card> -->
+
+  <ion-searchbar placeholder="Search products"></ion-searchbar>
+
+  <ion-card *ngFor="let p of products | async" [routerLink]="[p.id]" class="card">
+    <ion-card-header>
+    </ion-card-header>
+    <ion-card-content>
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <img class="img-small" height="30%" width="30%" [src]="p.data.img">
+      </div>
+      <div class="container-alt">
+        <ion-card-content>{{ p.data.name }}</ion-card-content>
+        <ion-card-subtitle>{{ p.data.price | currency:'GBP' }}</ion-card-subtitle>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- <ion-list class="list-padding">
+    <ion-item *ngFor="let p of products | async" [routerLink]="[p.id]">
+      <ion-thumbnail slot="start">
+        <img [src]="p.data.img">
+      </ion-thumbnail>
+      <ion-label>
+        {{ p.data.name }}
+        <p>{{ p.data.price | currency:'GBP' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list> -->
+
+</ion-content>

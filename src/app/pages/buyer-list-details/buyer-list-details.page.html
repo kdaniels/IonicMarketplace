@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/buyer/list"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>{{ product?.name }}</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngIf="product">
+    <img [src]="product.img" class="ion-padding stage box bounce-7">
+    <ion-card-header>
+      <ion-card-title>{{ product?.name }}</ion-card-title>
+      <ion-card-subtitle>{{ product?.price | currency:'GBP'}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-row class="ion-align-items-center">
+        <ion-col size="4" class="ion-text-center">
+          <ion-button fill="clear" (click)="decreaseCart()" [disabled]="amount == 0">
+            <ion-icon name="remove" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="4" class="ion-text-center">
+          {{ this.amount }}
+        </ion-col>
+
+        <ion-col size="4" class="ion-text-center">
+          <ion-button fill="clear" (click)="addToCart()">
+            <ion-icon name="add" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <div [innerHtml]="product.description"></div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-slides>
+    <ion-slide *ngFor="let p of products">
+    </ion-slide>
+  </ion-slides>
+
+  <p>Frequently bought with...</p>
+  <p>People who bought this also bought...</p>
+
+</ion-content>

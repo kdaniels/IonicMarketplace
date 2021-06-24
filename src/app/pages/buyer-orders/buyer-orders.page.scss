@@ -1,0 +1,18 @@
+/* removes the toolbar background and line spacing */
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}
+
+.show-background {
+    border-style: none;
+    background: var(--ion-color-primary);
+}
+
+.header-md::after {
+    background-image: none;
+}
+
+.header-ios ion-toolbar:last-child {
+    --border-width: 0;
+}

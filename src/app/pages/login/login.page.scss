@@ -1,0 +1,73 @@
+ion-input {
+    background: #ececec;
+    border-radius: 10px;
+    margin-top: 6px;
+    --padding-start: 6px !important;
+  }
+
+  .card-header {
+    display: inline;
+  }
+  
+  /* entire container, keeps perspective */
+  .flip-container {
+    perspective: 1000px;
+  }
+  
+  .flip-container.flip .flipper {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-container,
+  .front,
+  .back {
+    width: 100%;
+    height: 500px;
+  }
+  
+  /* flip speed goes here */
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+  
+    position: relative;
+  }
+  
+  /* hide back of pane during swap */
+  .front,
+  .back {
+    backface-visibility: hidden;
+  
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* front pane, placed above back */
+  .front {
+    z-index: 2;
+  }
+  
+/* back, initially hidden pane */
+.back {
+    transform: rotateY(180deg);
+}
+
+/* removes the toolbar background and line spacing */
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}
+
+.show-background {
+    border-style: none;
+    background: var(--ion-color-primary);
+}
+
+.header-md::after {
+    background-image: none;
+}
+
+.header-ios ion-toolbar:last-child {
+    --border-width: 0;
+}

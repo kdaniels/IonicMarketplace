@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="signOut()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Sell Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let p of products | async">
+      <ion-thumbnail slot="start">
+        <img [src]="p.data.img">
+      </ion-thumbnail>
+      <ion-label>
+        {{ p.data.name }}
+        <p>{{ p.data.price | currency:'GBP' }}</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear" (click)="deleteItem(p.id)">
+        <ion-icon name="trash" slot="icon-only" color="secondary"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="new" color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
